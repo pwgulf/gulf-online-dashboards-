@@ -82,29 +82,18 @@
 
             <section id="academics-section" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 bg-slate-950 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h3 class="text-lg font-bold text-white">Multi-Stream Strategic Operations Trend</h3>
-                            <p class="text-xs text-slate-400">Weekly run-rate monitoring over key target scores</p>
-                        </div>
-                    </div>
+                    <h3 class="text-lg font-bold text-white">Multi-Stream Strategic Operations Trend</h3>
                     <div class="h-80"><canvas id="weeklyOpsChart"></canvas></div>
                 </div>
-
                 <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-white">Test Type Competency Matrix</h3>
-                        <p class="text-xs text-slate-400">Objective vs Subjective performance indices</p>
-                    </div>
+                    <h3 class="text-lg font-bold text-white">Test Type Competency Matrix</h3>
                     <div class="h-80"><canvas id="testComparisonChart"></canvas></div>
                 </div>
             </section>
 
             <section id="operations-section" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 bg-slate-950 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-lg font-bold text-white"><i class="fa-solid fa-shield-halved text-emerald-400 mr-2"></i>Branch Manager (BM) KRA Matrix Leaderboard</h3>
-                    </div>
+                    <h3 class="text-lg font-bold text-white"><i class="fa-solid fa-shield-halved text-emerald-400 mr-2"></i>Branch Manager (BM) KRA Matrix Leaderboard</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-sm border-collapse">
                             <thead>
@@ -117,17 +106,13 @@
                                 </tr>
                             </thead>
                             <tbody id="bm-kra-body" class="divide-y divide-slate-900 text-slate-300">
-                                <tr><td colspan="5" class="text-center py-8 text-slate-500 font-mono">Loading data pipeline values...</td></tr>
+                                <tr><td colspan="5" class="text-center py-8 text-slate-500 font-mono">Connecting data streams...</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
                 <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-white">Query Backlog & Volume Analysis</h3>
-                        <p class="text-xs text-slate-400">Escalated tickets tracking across regional BMs</p>
-                    </div>
+                    <h3 class="text-lg font-bold text-white">Query Backlog & Volume Analysis</h3>
                     <div class="h-72"><canvas id="queryBacklogChart"></canvas></div>
                 </div>
             </section>
@@ -137,25 +122,23 @@
                     <h3 class="text-lg font-bold text-white">Batch Renewal Pipeline Conversion</h3>
                     <div class="h-64"><canvas id="renewalConversionChart"></canvas></div>
                 </div>
-
                 <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4">
                     <h3 class="text-lg font-bold text-white">Primary Attrition Vectors</h3>
                     <div class="h-64 flex items-center justify-center"><canvas id="attritionPieChart"></canvas></div>
                 </div>
-
                 <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-                    <h3 class="text-lg font-bold text-white"><i class="fa-solid fa-chalkboard-user text-blue-400 mr-2"></i>Faculty Performance Metrics</h3>
+                    <h3 class="text-lg font-bold text-white"><i class="fa-solid fa-chalkboard-user text-blue-400 mr-2"></i>Faculty Metrics</h3>
                     <div class="overflow-y-auto max-h-64">
                         <table class="w-full text-left text-xs border-collapse">
                             <thead>
                                 <tr class="border-b border-slate-800 text-slate-400 font-mono uppercase tracking-wider">
                                     <th class="py-2 px-3">Faculty</th>
                                     <th class="py-2 px-3 text-center">Satisfaction</th>
-                                    <th class="py-2 px-3 text-right">KRA Score</th>
+                                    <th class="py-2 px-3 text-right">Overall Score</th>
                                 </tr>
                             </thead>
                             <tbody id="faculty-ledger-body" class="divide-y divide-slate-900 text-slate-300">
-                                <tr><td colspan="3" class="text-center py-4 text-slate-500 font-mono">Loading data pipeline values...</td></tr>
+                                <tr><td colspan="3" class="text-center py-4 text-slate-500 font-mono">Syncing educators matrix...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -172,11 +155,11 @@
                                 <th class="py-3 px-4">Assigned Section</th>
                                 <th class="py-3 px-4">Managing BM</th>
                                 <th class="py-3 px-4">Primary Educator</th>
-                                <th class="py-3 px-4 text-right">Operational Health Status</th>
+                                <th class="py-3 px-4 text-right">Operational Status</th>
                             </tr>
                         </thead>
                         <tbody id="master-batch-grid" class="divide-y divide-slate-900 text-slate-300">
-                            <tr><td colspan="5" class="text-center py-6 text-slate-500 font-mono">Consolidating cross-relational data pools...</td></tr>
+                            <tr><td colspan="5" class="text-center py-6 text-slate-500 font-mono">Consolidating cross-relational arrays...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -185,77 +168,82 @@
     </div>
 
     <script>
-        // Set Default Formatting Configurations for Charts
         Chart.defaults.color = '#64748b';
         Chart.defaults.font.family = 'ui-sans-serif, system-ui, -apple-system, sans-serif';
 
-        // MAPPED TO EXPLICIT NEW FILE NAMES FROM IMAGE INSIDE data/ SUBFOLDER
+        // Paths mapped with direct dot relative access to prevent case routing conflicts
         const globalPipelineRegistry = {
-            settings: 'data/Dashboard_Settings.csv',
-            master: 'data/Master_Batch.csv',
-            attendance: 'data/Attendance.csv',
-            objective: 'data/Objective_Test.csv',
-            subjective: 'data/Subjective_Test.csv',
-            trend: 'data/Weekly_Trend.csv',
-            renewal: 'data/Renewal_Tracker.csv',
-            ptm: 'data/PTM_Tracker.csv',
-            query: 'data/Query_Resolution.csv',
-            teacher: 'data/Teacher_Performance.csv',
-            risk: 'data/Risk_Students.csv',
-            discontinuation: 'data/Discontinuation.csv',
-            kra: 'data/BM_KRA.csv',
-            absentCalling: 'data/BM_Absent_Calling.csv',
-            audit: 'data/BM_Audit.csv'
+            settings: './data/Dashboard_Settings.csv',
+            master: './data/Master_Batch.csv',
+            attendance: './data/Attendance.csv',
+            objective: './data/Objective_Test.csv',
+            subjective: './data/Subjective_Test.csv',
+            trend: './data/Weekly_Trend.csv',
+            renewal: './data/Renewal_Tracker.csv',
+            ptm: './data/PTM_Tracker.csv',
+            query: './data/Query_Resolution.csv',
+            teacher: './data/Teacher_Performance.csv',
+            risk: './data/Risk_Students.csv',
+            discontinuation: './data/Discontinuation.csv',
+            kra: './data/BM_KRA.csv',
+            absentCalling: './data/BM_Absent_Calling.csv',
+            audit: './data/BM_Audit.csv'
         };
 
         document.addEventListener("DOMContentLoaded", async () => {
-            console.log("Compiling enterprise operational data matrix...");
             const database = await ingestCorporatePipelines(globalPipelineRegistry);
-            
-            // Build Dynamic Interface Layout Components
             applyDashboardCustomSettings(database.settings);
             processAndInjectMetrics(database);
         });
 
-        // Loop and Extract Files Safely with Fallback Recovery
         async function ingestCorporatePipelines(registry) {
             let coreStorage = {};
             for (const [key, path] of Object.entries(registry)) {
                 try {
                     const response = await fetch(path);
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    if (!response.ok) throw new Error(`HTTP error ${response.status}`);
                     const textData = await response.text();
                     coreStorage[key] = cleanCSVStringToObjects(textData);
                 } catch (err) {
-                    console.warn(`File [${key}] loading skipped or unreadable at ${path}. Deploying live structural backups.`, err.message);
-                    coreStorage[key] = triggerStructuralBackups(key);
+                    console.error(`File parsing dropped on [${key}] from path: ${path}`, err);
+                    coreStorage[key] = [];
                 }
             }
             return coreStorage;
         }
 
-        // Custom High-Performance Character String Comma Separated Parser
         function cleanCSVStringToObjects(csvText) {
-            const cleanText = csvText.replaceAll('\r', '');
-            const lines = cleanText.split('\n').filter(l => l.trim() !== '');
+            const cleanText = csvText.replaceAll('\r', '').trim();
+            const lines = cleanText.split('\n');
             if (lines.length < 2) return [];
             
             const headers = lines[0].split(',').map(h => h.trim());
             return lines.slice(1).map(line => {
-                const matches = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || line.split(',');
+                let fields = [];
+                let currentField = '';
+                let inQuotes = false;
+                
+                for (let i = 0; i < line.length; i++) {
+                    let char = line[i];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        fields.push(currentField.trim());
+                        currentField = '';
+                    } else {
+                        currentField += char;
+                    }
+                }
+                fields.push(currentField.trim());
+
                 let datasetObj = {};
                 headers.forEach((header, index) => {
-                    let fieldVal = matches[index]?.trim() || '';
-                    if (fieldVal.startsWith('"') && fieldVal.endsWith('"')) {
-                        fieldVal = fieldVal.substring(1, fieldVal.length - 1);
-                    }
-                    datasetObj[header] = fieldVal;
+                    datasetObj[header] = fields[index] || '';
                 });
                 return datasetObj;
             });
         }
 
-        // Core Dashboard Configuration Engine
         function applyDashboardCustomSettings(settingsData) {
             if (!settingsData || !settingsData.length) return;
             settingsData.forEach(row => {
@@ -274,147 +262,139 @@
             });
         }
 
-        // Analytical Aggregator & UI Mapping Component
         function processAndInjectMetrics(db) {
-            // --- KPI Calculations ---
-            const avgAttendance = db.attendance.length ? (db.attendance.reduce((acc, row) => acc + parseFloat(row['Attendance %'] || 0), 0) / db.attendance.length).toFixed(1) : "0.0";
+            // Attendance KPI
+            const filteredAttendance = db.attendance.map(row => parseFloat(row['Attendance %'])).filter(val => !isNaN(val));
+            const avgAttendance = filteredAttendance.length ? (filteredAttendance.reduce((a, b) => a + b, 0) / filteredAttendance.length).toFixed(1) : "0.0";
             document.getElementById('kpi-attendance').innerText = `${avgAttendance}%`;
 
-            const avgObjective = db.objective.length ? (db.objective.reduce((acc, row) => acc + parseFloat(row['Avg Score'] || 0), 0) / db.objective.length).toFixed(1) : "0.0";
+            // Objective KPI
+            const filteredObjective = db.objective.map(row => parseFloat(row['Avg Score'])).filter(val => !isNaN(val));
+            const avgObjective = filteredObjective.length ? (filteredObjective.reduce((a, b) => a + b, 0) / filteredObjective.length).toFixed(1) : "0.0";
             document.getElementById('kpi-objective').innerText = `${avgObjective}%`;
 
-            const avgSubjective = db.subjective.length ? (db.subjective.reduce((acc, row) => acc + parseFloat(row['Avg Marks'] || 0), 0) / db.subjective.length).toFixed(1) : "0.0";
+            // Subjective KPI
+            const filteredSubjective = db.subjective.map(row => parseFloat(row['Avg Marks'])).filter(val => !isNaN(val));
+            const avgSubjective = filteredSubjective.length ? (filteredSubjective.reduce((a, b) => a + b, 0) / filteredSubjective.length).toFixed(1) : "0.0";
             document.getElementById('kpi-subjective').innerText = `${avgSubjective}%`;
 
-            const criticalRiskCount = db.risk.filter(row => row['Risk Level'] === 'High').length;
+            // Risk Counter
+            const criticalRiskCount = db.risk ? db.risk.filter(row => row['Risk Level'] === 'High').length : 0;
             document.getElementById('kpi-risk-count').innerText = criticalRiskCount;
 
-            // --- Chart Processing Operations ---
-            // 1. Weekly Multi-Operational Line Chart
+            // Chart 1: Multi Operational Metrics Line Chart
             const trendCtx = document.getElementById('weeklyOpsChart').getContext('2d');
             new Chart(trendCtx, {
                 type: 'line',
                 data: {
-                    labels: db.trend.map(r => r.Week || 'Wk'),
+                    labels: db.trend.length ? db.trend.map(r => r.Week) : ['W1', 'W2', 'W3', 'W4'],
                     datasets: [
-                        { label: 'Attendance Run-rate %', data: db.trend.map(r => parseFloat(r['Attendance %'] || 0)), borderColor: '#10b981', tension: 0.2, fill: false },
-                        { label: 'Audit Scoring %', data: db.trend.map(r => parseFloat(r['Audit Score'] || 0)), borderColor: '#f59e0b', tension: 0.2, fill: false },
-                        { label: 'Calling Penetration %', data: db.trend.map(r => parseFloat(r['Calling %'] || 0)), borderColor: '#3b82f6', tension: 0.2, fill: false }
-                    ]
-                },
-                options: { responsive: true, maintainAspectRatio: false, scales: { x: { grid: { display: false } }, y: { max: 100, min: 50 } } }
-            });
-
-            // 2. Bar Chart: Academic Test Competency Comparison
-            const testCtx = document.getElementById('testComparisonChart').getContext('2d');
-            new Chart(testCtx, {
-                type: 'bar',
-                data: {
-                    labels: db.objective.map(r => r.Batch || 'Batch'),
-                    datasets: [
-                        { label: 'Objective Avg %', data: db.objective.map(r => parseFloat(r['Avg Score'] || 0)), backgroundColor: '#3b82f6' },
-                        { label: 'Subjective Avg %', data: db.subjective.map(r => parseFloat(r['Avg Marks'] || 0)), backgroundColor: '#8b5cf6' }
-                    ]
-                },
-                options: { responsive: true, maintainAspectRatio: false, scales: { x: { grid: { display: false } } } }
-            });
-
-            // 3. Query Analysis Stacked Bars
-            const queryCtx = document.getElementById('queryBacklogChart').getContext('2d');
-            new Chart(queryCtx, {
-                type: 'bar',
-                data: {
-                    labels: db.query.map(r => r.BM || 'BM'),
-                    datasets: [
-                        { label: 'Closed Cases', data: db.query.map(r => parseInt(r['Closed Query'] || 0)), backgroundColor: '#10b981' },
-                        { label: 'Pending Escalation', data: db.query.map(r => parseInt(r['Pending Query'] || 0)), backgroundColor: '#ef4444' }
-                    ]
-                },
-                options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true } } }
-            });
-
-            // 4. Renewal Target Conversions Bar
-            const renewalCtx = document.getElementById('renewalConversionChart').getContext('2d');
-            new Chart(renewalCtx, {
-                type: 'bar',
-                data: {
-                    labels: db.renewal.map(r => r.Batch),
-                    datasets: [
-                        { label: 'Converted', data: db.renewal.map(r => parseInt(r.Renewed)), backgroundColor: '#0ea5e9' },
-                        { label: 'Decisions Pending', data: db.renewal.map(r => parseInt(r.Pending)), backgroundColor: '#475569' }
+                        { label: 'Attendance %', data: db.trend.map(r => parseFloat(r['Attendance %']) || 0), borderColor: '#10b981', tension: 0.1 },
+                        { label: 'Audit Scores %', data: db.trend.map(r => parseFloat(r['Audit Score']) || 0), borderColor: '#f59e0b', tension: 0.1 },
+                        { label: 'Call Volume %', data: db.trend.map(r => parseFloat(r['Calling %']) || 0), borderColor: '#3b82f6', tension: 0.1 }
                     ]
                 },
                 options: { responsive: true, maintainAspectRatio: false }
             });
 
-            // 5. Attrition Distribution Pie
+            // Chart 2: Academic Core Bar Chart
+            const testCtx = document.getElementById('testComparisonChart').getContext('2d');
+            new Chart(testCtx, {
+                type: 'bar',
+                data: {
+                    labels: db.objective.length ? db.objective.map(r => r.Batch) : ['Alpha', 'Gamma'],
+                    datasets: [
+                        { label: 'Objective %', data: db.objective.map(r => parseFloat(r['Avg Score']) || 0), backgroundColor: '#3b82f6' },
+                        { label: 'Subjective %', data: db.subjective.map(r => parseFloat(r['Avg Marks']) || 0), backgroundColor: '#8b5cf6' }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+
+            // Chart 3: Query backlogs
+            const queryCtx = document.getElementById('queryBacklogChart').getContext('2d');
+            new Chart(queryCtx, {
+                type: 'bar',
+                data: {
+                    labels: db.query.length ? db.query.map(r => r.BM) : ['Rahul', 'Ahmed', 'Syed'],
+                    datasets: [
+                        { label: 'Closed Cases', data: db.query.map(r => parseInt(r['Closed Query']) || 0), backgroundColor: '#10b981' },
+                        { label: 'Pending Cases', data: db.query.map(r => parseInt(r['Pending Query']) || 0), backgroundColor: '#ef4444' }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true } } }
+            });
+
+            // Chart 4: Renewals Pipeline
+            const renewalCtx = document.getElementById('renewalConversionChart').getContext('2d');
+            new Chart(renewalCtx, {
+                type: 'bar',
+                data: {
+                    labels: db.renewal.length ? db.renewal.map(r => r.Batch) : ['Alpha', 'Beta', 'Gamma'],
+                    datasets: [
+                        { label: 'Converted', data: db.renewal.map(r => parseInt(r.Renewed) || 0), backgroundColor: '#0ea5e9' },
+                        { label: 'Pending Decisions', data: db.renewal.map(r => parseInt(r.Pending) || 0), backgroundColor: '#475569' }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+
+            // Chart 5: Discontinuations Pie
             const pieCtx = document.getElementById('attritionPieChart').getContext('2d');
             let reasons = {};
-            db.discontinuation.forEach(row => { reasons[row.Bucket || 'Other'] = (reasons[row.Bucket || 'Other'] || 0) + 1; });
+            if(db.discontinuation.length) {
+                db.discontinuation.forEach(row => { if(row.Bucket) reasons[row.Bucket] = (reasons[row.Bucket] || 0) + 1; });
+            } else { reasons = {'Academic': 1, 'Relocation': 1, 'Offline': 1}; }
             new Chart(pieCtx, {
                 type: 'pie',
                 data: {
                     labels: Object.keys(reasons),
-                    datasets: [{ data: Object.values(reasons), backgroundColor: ['#ec4899', '#f43f5e', '#e2e8f0', '#f59e0b'] }]
+                    datasets: [{ data: Object.values(reasons), backgroundColor: ['#ec4899', '#f43f5e', '#3b82f6', '#f59e0b'] }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+                options: { responsive: true, maintainAspectRatio: false }
             });
 
-            // --- UI Table Rendering Elements ---
-            // BM KRA Table Injection
+            // Table 1: BM KRA
             const bmBody = document.getElementById('bm-kra-body');
-            bmBody.innerHTML = db.kra.map(row => `
-                <tr class="hover:bg-slate-900/60 transition">
-                    <td class="py-3 px-4 font-bold text-white">${row['BM Name'] || 'N/A'}</td>
-                    <td class="py-3 px-4 text-center font-mono">${row['Attendance Score'] || '0'}%</td>
-                    <td class="py-3 px-4 text-center font-mono">${row['Audit Score'] || '0'}%</td>
-                    <td class="py-3 px-4 text-center font-mono">${row['Calling Score'] || '0'}%</td>
-                    <td class="py-3 px-4 text-right font-black font-mono text-emerald-400">${row['Overall Score'] || '0'}</td>
-                </tr>
-            `).join('');
+            if(db.kra.length) {
+                bmBody.innerHTML = db.kra.map(row => `
+                    <tr class="hover:bg-slate-900/60 transition">
+                        <td class="py-3 px-4 font-bold text-white">${row['BM Name'] || 'N/A'}</td>
+                        <td class="py-3 px-4 text-center font-mono">${row['Attendance Score'] || '0'}%</td>
+                        <td class="py-3 px-4 text-center font-mono">${row['Audit Score'] || '0'}%</td>
+                        <td class="py-3 px-4 text-center font-mono">${row['Calling Score'] || '0'}%</td>
+                        <td class="py-3 px-4 text-right font-black font-mono text-emerald-400">${row['Overall Score'] || '0'}</td>
+                    </tr>
+                `).join('');
+            } else { bmBody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-slate-500">No active operational records</td></tr>`; }
 
-            // Faculty Performance Summary Injection
+            // Table 2: Faculty List
             const facultyBody = document.getElementById('faculty-ledger-body');
-            facultyBody.innerHTML = db.teacher.map(row => `
-                <tr class="hover:bg-slate-900/60 transition text-[13px]">
-                    <td class="py-2.5 px-3 font-semibold text-white">${row['Teacher'] || 'N/A'}</td>
-                    <td class="py-2.5 px-3 text-center text-amber-400 font-bold"><i class="fa-solid fa-star text-[10px] mr-1"></i>${row['Student Satisfaction'] || '0'}</td>
-                    <td class="py-2.5 px-3 text-right font-bold font-mono text-slate-400">${row['Overall Score'] || '0'}</td>
-                </tr>
-            `).join('');
+            if(db.teacher.length) {
+                facultyBody.innerHTML = db.teacher.map(row => `
+                    <tr class="hover:bg-slate-900/60 transition text-[13px]">
+                        <td class="py-2.5 px-3 font-semibold text-white">${row['Teacher'] || 'N/A'}</td>
+                        <td class="py-2.5 px-3 text-center text-amber-400 font-bold"><i class="fa-solid fa-star text-[10px] mr-1"></i>${row['Student Satisfaction'] || '0'}</td>
+                        <td class="py-2.5 px-3 text-right font-bold font-mono text-slate-400">${row['Overall Score'] || '0'}</td>
+                    </tr>
+                `).join('');
+            } else { facultyBody.innerHTML = `<tr><td colspan="3" class="text-center py-4 text-slate-500">No active educator arrays</td></tr>`; }
 
-            // Operational Master Health Grid Combined Join View
+            // Table 3: Master Grid
             const gridBody = document.getElementById('master-batch-grid');
-            gridBody.innerHTML = db.master.map(row => `
-                <tr class="hover:bg-slate-900/60 transition">
-                    <td class="py-3 px-4 font-mono text-white font-bold">Grade ${row.Grade || '10'} - ${row.Batch || 'N/A'}</td>
-                    <td class="py-3 px-4 text-slate-400">${row.Section || 'A'}</td>
-                    <td class="py-3 px-4 text-slate-300 font-medium">${row.BM || 'N/A'}</td>
-                    <td class="py-3 px-4 text-slate-300">${row.Teacher || 'N/A'}</td>
-                    <td class="py-3 px-4 text-right">
-                        <span class="px-2.5 py-1 text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Active</span>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        // Operational Visual Struct Dynamic Fallback Generators
-        function triggerStructuralBackups(key) {
-            const registry = {
-                settings: [{Setting: 'Dashboard Name', Value: 'PW Gulf Operations Command Center'}, {Setting: 'CEO Name', Value: 'Salman Sir'}, {Setting: 'Academic Session', Value: '2026-27'}],
-                master: [{Grade: '10', Batch: 'Alpha', Section: 'A', BM: 'Rahul', Teacher: 'Amit Sir'}],
-                attendance: [{'Attendance %': 90}],
-                objective: [{Batch: 'Alpha', 'Avg Score': 75}],
-                subjective: [{Batch: 'Alpha', 'Avg Marks': 70}],
-                trend: [{Week: 'W1', 'Attendance %': 85, 'Audit Score': 90, 'Calling %': 85}],
-                renewal: [{Batch: 'Alpha', Eligible: 50, Renewed: 40, Pending: 10}],
-                query: [{BM: 'Rahul', 'Closed Query': 10, 'Pending Query': 1}],
-                risk: [{'Risk Level': 'High'}],
-                discontinuation: [{Bucket: 'Academic'}],
-                kra: [{ 'BM Name': 'Rahul', 'Attendance Score': 90, 'Audit Score': 90, 'Calling Score': 90, 'Overall Score': '90' }],
-                teacher: [{Teacher: 'Amit Sir', 'Student Satisfaction': '4.5', 'Overall Score': '85'}]
-            };
-            return registry[key] || [];
+            if(db.master.length) {
+                gridBody.innerHTML = db.master.map(row => `
+                    <tr class="hover:bg-slate-900/60 transition">
+                        <td class="py-3 px-4 font-mono text-white font-bold">Grade ${row.Grade || '10'} - ${row.Batch || 'N/A'}</td>
+                        <td class="py-3 px-4 text-slate-400">${row.Section || 'A'}</td>
+                        <td class="py-3 px-4 text-slate-300 font-medium">${row.BM || 'N/A'}</td>
+                        <td class="py-3 px-4 text-slate-300">${row.Teacher || 'N/A'}</td>
+                        <td class="py-3 px-4 text-right">
+                            <span class="px-2.5 py-1 text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Active</span>
+                        </td>
+                    </tr>
+                `).join('');
+            } else { gridBody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-slate-500">No active configuration matrix map</td></tr>`; }
         }
     </script>
 </body>
