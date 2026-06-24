@@ -189,23 +189,23 @@
         Chart.defaults.color = '#64748b';
         Chart.defaults.font.family = 'ui-sans-serif, system-ui, -apple-system, sans-serif';
 
-        // 15 Corporate File Ingestion Registry Mappings
+        // MAPPED TO EXPLICIT NEW FILE NAMES FROM IMAGE INSIDE data/ SUBFOLDER
         const globalPipelineRegistry = {
-            settings: 'data/Report for Salman Sir_Gulf Online - Dashboard_Settings.csv',
-            master: 'data/Report for Salman Sir_Gulf Online - Master_Batch.csv',
-            attendance: 'data/Report for Salman Sir_Gulf Online - Attendance.csv',
-            objective: 'data/Report for Salman Sir_Gulf Online - Objective_Test.csv',
-            subjective: 'data/Report for Salman Sir_Gulf Online - Subjective_Test.csv',
-            trend: 'data/Report for Salman Sir_Gulf Online - Weekly_Trend.csv',
-            renewal: 'data/Report for Salman Sir_Gulf Online - Renewal_Tracker.csv',
-            ptm: 'data/Report for Salman Sir_Gulf Online - PTM_Tracker.csv',
-            query: 'data/Report for Salman Sir_Gulf Online - Query_Resolution.csv',
-            teacher: 'data/Report for Salman Sir_Gulf Online - Teacher_Performance.csv',
-            risk: 'data/Report for Salman Sir_Gulf Online - Risk_Students.csv',
-            discontinuation: 'data/Report for Salman Sir_Gulf Online - Discontinuation.csv',
-            kra: 'data/Report for Salman Sir_Gulf Online - BM_KRA.csv',
-            absentCalling: 'data/Report for Salman Sir_Gulf Online - BM_Absent_Calling.csv',
-            audit: 'data/Report for Salman Sir_Gulf Online - BM_Audit.csv'
+            settings: 'data/Dashboard_Settings.csv',
+            master: 'data/Master_Batch.csv',
+            attendance: 'data/Attendance.csv',
+            objective: 'data/Objective_Test.csv',
+            subjective: 'data/Subjective_Test.csv',
+            trend: 'data/Weekly_Trend.csv',
+            renewal: 'data/Renewal_Tracker.csv',
+            ptm: 'data/PTM_Tracker.csv',
+            query: 'data/Query_Resolution.csv',
+            teacher: 'data/Teacher_Performance.csv',
+            risk: 'data/Risk_Students.csv',
+            discontinuation: 'data/Discontinuation.csv',
+            kra: 'data/BM_KRA.csv',
+            absentCalling: 'data/BM_Absent_Calling.csv',
+            audit: 'data/BM_Audit.csv'
         };
 
         document.addEventListener("DOMContentLoaded", async () => {
@@ -227,7 +227,7 @@
                     const textData = await response.text();
                     coreStorage[key] = cleanCSVStringToObjects(textData);
                 } catch (err) {
-                    console.warn(`File [${key}] loading skipped or unreadable. Deploying live structural backups.`, err.message);
+                    console.warn(`File [${key}] loading skipped or unreadable at ${path}. Deploying live structural backups.`, err.message);
                     coreStorage[key] = triggerStructuralBackups(key);
                 }
             }
@@ -277,16 +277,16 @@
         // Analytical Aggregator & UI Mapping Component
         function processAndInjectMetrics(db) {
             // --- KPI Calculations ---
-            const avgAttendance = db.attendance.length ? (db.attendance.reduce((acc, row) => acc + parseFloat(row['Attendance %'] || 0), 0) / db.attendance.length).toFixed(1) : "89.0";
+            const avgAttendance = db.attendance.length ? (db.attendance.reduce((acc, row) => acc + parseFloat(row['Attendance %'] || 0), 0) / db.attendance.length).toFixed(1) : "0.0";
             document.getElementById('kpi-attendance').innerText = `${avgAttendance}%`;
 
-            const avgObjective = db.objective.length ? (db.objective.reduce((acc, row) => acc + parseFloat(row['Avg Score'] || 0), 0) / db.objective.length).toFixed(1) : "74.5";
+            const avgObjective = db.objective.length ? (db.objective.reduce((acc, row) => acc + parseFloat(row['Avg Score'] || 0), 0) / db.objective.length).toFixed(1) : "0.0";
             document.getElementById('kpi-objective').innerText = `${avgObjective}%`;
 
-            const avgSubjective = db.subjective.length ? (db.subjective.reduce((acc, row) => acc + parseFloat(row['Avg Marks'] || 0), 0) / db.subjective.length).toFixed(1) : "68.5";
+            const avgSubjective = db.subjective.length ? (db.subjective.reduce((acc, row) => acc + parseFloat(row['Avg Marks'] || 0), 0) / db.subjective.length).toFixed(1) : "0.0";
             document.getElementById('kpi-subjective').innerText = `${avgSubjective}%`;
 
-            const criticalRiskCount = db.risk.filter(row => row['Risk Level'] === 'High').length || "2";
+            const criticalRiskCount = db.risk.filter(row => row['Risk Level'] === 'High').length;
             document.getElementById('kpi-risk-count').innerText = criticalRiskCount;
 
             // --- Chart Processing Operations ---
@@ -365,11 +365,11 @@
             const bmBody = document.getElementById('bm-kra-body');
             bmBody.innerHTML = db.kra.map(row => `
                 <tr class="hover:bg-slate-900/60 transition">
-                    <td class="py-3 px-4 font-bold text-white">${row['BM Name']}</td>
-                    <td class="py-3 px-4 text-center font-mono">${row['Attendance Score']}%</td>
-                    <td class="py-3 px-4 text-center font-mono">${row['Audit Score']}%</td>
-                    <td class="py-3 px-4 text-center font-mono">${row['Calling Score']}%</td>
-                    <td class="py-3 px-4 text-right font-black font-mono text-emerald-400">${row['Overall Score']}</td>
+                    <td class="py-3 px-4 font-bold text-white">${row['BM Name'] || 'N/A'}</td>
+                    <td class="py-3 px-4 text-center font-mono">${row['Attendance Score'] || '0'}%</td>
+                    <td class="py-3 px-4 text-center font-mono">${row['Audit Score'] || '0'}%</td>
+                    <td class="py-3 px-4 text-center font-mono">${row['Calling Score'] || '0'}%</td>
+                    <td class="py-3 px-4 text-right font-black font-mono text-emerald-400">${row['Overall Score'] || '0'}</td>
                 </tr>
             `).join('');
 
@@ -377,9 +377,9 @@
             const facultyBody = document.getElementById('faculty-ledger-body');
             facultyBody.innerHTML = db.teacher.map(row => `
                 <tr class="hover:bg-slate-900/60 transition text-[13px]">
-                    <td class="py-2.5 px-3 font-semibold text-white">${row['Teacher']}</td>
-                    <td class="py-2.5 px-3 text-center text-amber-400 font-bold"><i class="fa-solid fa-star text-[10px] mr-1"></i>${row['Student Satisfaction']}</td>
-                    <td class="py-2.5 px-3 text-right font-bold font-mono text-slate-400">${row['Overall Score']}</td>
+                    <td class="py-2.5 px-3 font-semibold text-white">${row['Teacher'] || 'N/A'}</td>
+                    <td class="py-2.5 px-3 text-center text-amber-400 font-bold"><i class="fa-solid fa-star text-[10px] mr-1"></i>${row['Student Satisfaction'] || '0'}</td>
+                    <td class="py-2.5 px-3 text-right font-bold font-mono text-slate-400">${row['Overall Score'] || '0'}</td>
                 </tr>
             `).join('');
 
@@ -387,12 +387,12 @@
             const gridBody = document.getElementById('master-batch-grid');
             gridBody.innerHTML = db.master.map(row => `
                 <tr class="hover:bg-slate-900/60 transition">
-                    <td class="py-3 px-4 font-mono text-white font-bold">Grade ${row.Grade || '10'} - ${row.Batch}</td>
-                    <td class="py-3 px-4 text-slate-400">${row.Section}</td>
-                    <td class="py-3 px-4 text-slate-300 font-medium">${row.BM}</td>
-                    <td class="py-3 px-4 text-slate-300">${row.Teacher}</td>
+                    <td class="py-3 px-4 font-mono text-white font-bold">Grade ${row.Grade || '10'} - ${row.Batch || 'N/A'}</td>
+                    <td class="py-3 px-4 text-slate-400">${row.Section || 'A'}</td>
+                    <td class="py-3 px-4 text-slate-300 font-medium">${row.BM || 'N/A'}</td>
+                    <td class="py-3 px-4 text-slate-300">${row.Teacher || 'N/A'}</td>
                     <td class="py-3 px-4 text-right">
-                        <span class="px-2.5 py-1 text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Operational</span>
+                        <span class="px-2.5 py-1 text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Active</span>
                     </td>
                 </tr>
             `).join('');
@@ -402,17 +402,17 @@
         function triggerStructuralBackups(key) {
             const registry = {
                 settings: [{Setting: 'Dashboard Name', Value: 'PW Gulf Operations Command Center'}, {Setting: 'CEO Name', Value: 'Salman Sir'}, {Setting: 'Academic Session', Value: '2026-27'}],
-                master: [{Grade: '10', Batch: 'Alpha', Section: 'A', BM: 'Rahul', Teacher: 'Amit Sir'}, {Grade: '12', Batch: 'Gamma', Section: 'A', BM: 'Syed', Teacher: 'Rakesh Sir'}],
-                attendance: [{'Attendance %': 90}, {'Attendance %': 75}],
-                objective: [{Batch: 'Alpha', 'Avg Score': 78}, {Batch: 'Gamma', 'Avg Score': 61}],
-                subjective: [{Batch: 'Alpha', 'Avg Marks': 74}, {Batch: 'Gamma', 'Avg Marks': 63}],
-                trend: [{Week: 'W1', 'Attendance %': 82, 'Audit Score': 92, 'Calling %': 88}, {Week: 'W2', 'Attendance %': 84, 'Audit Score': 93, 'Calling %': 89}],
-                renewal: [{Batch: 'Alpha', Eligible: 50, Renewed: 38, Pending: 12}, {Batch: 'Beta', Eligible: 40, Renewed: 28, Pending: 12}],
-                query: [{BM: 'Rahul', 'Closed Query': 15, 'Pending Query': 0}, {BM: 'Ahmed', 'Closed Query': 15, 'Pending Query': 3}],
-                risk: [{'Risk Level': 'High'}, {'Risk Level': 'Medium'}],
-                discontinuation: [{Bucket: 'Academic'}, {Bucket: 'Relocation'}],
-                kra: [{ 'BM Name': 'Rahul', 'Attendance Score': 95, 'Audit Score': 98, 'Calling Score': 100, 'Overall Score': 95.5 }],
-                teacher: [{Teacher: 'Amit Sir', 'Student Satisfaction': '4.8', 'Overall Score': '88'}]
+                master: [{Grade: '10', Batch: 'Alpha', Section: 'A', BM: 'Rahul', Teacher: 'Amit Sir'}],
+                attendance: [{'Attendance %': 90}],
+                objective: [{Batch: 'Alpha', 'Avg Score': 75}],
+                subjective: [{Batch: 'Alpha', 'Avg Marks': 70}],
+                trend: [{Week: 'W1', 'Attendance %': 85, 'Audit Score': 90, 'Calling %': 85}],
+                renewal: [{Batch: 'Alpha', Eligible: 50, Renewed: 40, Pending: 10}],
+                query: [{BM: 'Rahul', 'Closed Query': 10, 'Pending Query': 1}],
+                risk: [{'Risk Level': 'High'}],
+                discontinuation: [{Bucket: 'Academic'}],
+                kra: [{ 'BM Name': 'Rahul', 'Attendance Score': 90, 'Audit Score': 90, 'Calling Score': 90, 'Overall Score': '90' }],
+                teacher: [{Teacher: 'Amit Sir', 'Student Satisfaction': '4.5', 'Overall Score': '85'}]
             };
             return registry[key] || [];
         }
